@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Каталог модов Mindustry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        /* Общий блок для полей ввода */
+        .search-and-category {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        /* Поисковая строка */
+        input[type=search], select {
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            padding-left: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            margin-right: 10px;
+            flex-grow: 1;
+            transition: all 0.3s ease;
+        }
+        
+        /* Выпадающий список */
+        select {
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            background-color: white;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+            color: #333; /* Цвет текста по умолчанию */
+        }
+
+        /* Цвет фона и текста при выборе */
+        select:focus {
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(255, 255, 255); /* Черный фон при фокусе */
+            color: rgb(0, 0, 0); /* Белый текст при фокусе */
+        }
+        option:focus {
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(0, 0, 0); /* Черный фон при фокусе */
+            color: rgb(255, 255, 255); } 
+        option:focus{
+             border: none;
+            border-radius: 5px;
+            background-color: rgb(0, 0, 0); /* Черный фон при фокусе */
+            color: rgb(255, 255, 255);
+        }
+        
+       
+        
+
+        /* Карточка мода */
+        .mod-card {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(33% - 20px);
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            transition: transform .3s ease-in-out;
+            text-align: center;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .mod-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,.2);
+        }
+        
+        .mod-card h4 {
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .mod-card button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mod-card button:hover {
+            background-color: #2c2c2c;
+            transform: scale(1.05);
+        }
+        
+        /* Контейнер тегов */
+        .tags {
+            display: flex;
+            gap: 5px;
+            padding: 5px;
+            font-size: smaller;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            color: #ffffff;
+            background-color: #667eea;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        
+        /* Контейнер результатов поиска */
+        .search-results-container {
+            display: none;
+            margin-bottom: 30px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .search-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .results-count {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .clear-search {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .clear-search:hover {
+            background: #cc0000;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .mod-card {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .search-and-category {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            select {
+                width: 100%;
+            }
+        }
+
+        /* Стиль подвала */
+        footer {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+        
+        .social-links p {
+            color: white;
+            margin: 5px 0;
+        }
+        
+        .social-links a:hover {
+            color: #ff0000; /* Цвет при наведении */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Заголовок -->
+    <h1 style="text-align:center; color: #333; margin-bottom: 30px;">Каталог модов Mindustry</h1>
+    
+    <!-- Блок поиска и выбора категории -->
+    <div class="search-and-category">
+        <input type="search" placeholder="🔍 Искать моды..." id="search-input">
+        <select id="category-filter">
+            <option value="">Все категории</option>
+            <option value="турели">турели</option>
+            <option value="расы">расы</option>
+            <option value="фабрики">фабрики</option>
+            <option value="стены">стены</option>
+            <option value="юниты">юниты</option>
+            <option value="руды">руды</option>
+            <option value="жидкости">жидкости</option>
+            <option value="блоки">блоки</option>
+            <option value="возможности">возможности</option>
+            <option value="новые-механики">новые-механики</option>
+            <option value="буры">буры</option>
+            <option value="читы">читы</option>
+            <option value="планеты">планеты</option>
+            <option value="улучшения">улучшения</option>
+            <option value="схемы">схемы</option>
+        </select>
+    </div>
+    
+    <!-- Контейнер результатов поиска (расположен ВЫШЕ основных модов) -->
+    <div class="search-results-container" id="search-results">
+        <div class="search-results-header">
+            <h2>Результаты поиска</h2>
+            <div class="results-count" id="results-count">Найдено: 0</div>
+            <button class="clear-search" onclick="clearSearch()">Очистить поиск</button>
+        </div>
+        <div class="grid-container" id="results-grid"></div>
+    </div>
+    
+    <!-- Основная сетка модов -->
+    <div class="grid-container" id="main-grid">
+        <!-- Карточка первого мода -->
+        <div class="mod-card буры турели новые-механики стены фабрики">
+            <h3>reVision</h3>
+            <p>Добавляет несколько новых механик и разбавляет ваниллу</p>
+            <button onclick="window.location.href='reVision-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">буры</span>
+                <span class="tag">турели</span>
+                <span class="tag">новые-механики</span>
+                <span class="tag">стены</span>
+                <span class="tag">фабрики</span>
+            </div>
+        </div>
+        
+        <!-- Карточка второго мода -->
+        <div class="mod-card новые-механики возможности читы">
+            <h3>Extended UI</h3>
+            <p>Мод для игровой индустрии, расширяющий пользовательский интерфейс полезными функциями.</p>
+            <button onclick="window.location.href='Extended UI-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">новые-механики</span>
+                <span class="tag">возможности</span>
+                <span class="tag">читы</span>
+            </div>
+        </div>
+        
+        <!-- Карточка третьего мода -->
+        <div class="mod-card руды жидкости турели стены новые-механики юниты планеты буры фабрики">
+            <h3>Xanthia</h3>
+            <p>Новая планета с большим наполнением</p>
+            <button onclick="window.location.href='Xanthia-mod-card.html'">Подробнее</button>
+            <div class="tags">
+               <span class="tag">руды</span>
+                <span class="tag">жидкости</span>
+                <span class="tag">турели</span>
+                 <span class="tag">стены</span>
+                  <span class="tag">новые-механики</span>
+                   <span class="tag">юниты</span>
+                    <span class="tag">планеты</span>
+                    <span class="tag">буры</span>
+                    <span class="tag">фабрики</span>
+            </div>
+        </div>
+        
+        <!-- Карточка четвертого мода -->
+        <div class="mod-card возможности читы">
+            <h3>TimeControl</h3>
+            <p>Ускоряет или замедляет работу Mindustry.</p>
+            <button onclick="window.location.href='TimeControl-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">возможности</span>
+                <span class="tag">читы</span>
+            </div>
+        </div>
+        
+        <!-- Карточка пятого мода -->
+        <div class="mod-card улучшения">
+            <h3>Mindustry Overhaul</h3>
+            <p>Этот мод — не просто дополнение, это переосмысленная реальность. </p>
+            <button onclick="window.location.href='Mindustry Overhaul-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">улучшения</span>
+            </div>
+        </div>
+        
+        <!-- Карточка шестого мода -->
+        <div class="mod-card схемы">
+            <h3>schemepack 400+</h3>
+            <p>Пак схем для игры mindustry</p>
+            <button onclick="window.location.href='schemepack 400+-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">схемы</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="social-links">
+            <p>Telegram-каналы</p>
+            <a href="https://t.me/mindustry_all" target="_blank">Спонсор сайта</a>
+            <a href="https://t.me/CatalogMindustry" target="_blank">Автор сайта</a>
+            <a href="https://www.instagram.com" target="_blank"></a>
+            <a href="https://www.linkedin.com" target="_blank"></a>
+            <a href="https://www.youtube.com" target="_blank"></a>
+        </div>
+    </footer>
+
+    <script>
+        const modCards = document.querySelectorAll('.mod-card');
+        const categoryFilter = document.getElementById('category-filter');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const resultsGrid = document.getElementById('results-grid');
+        const resultsCount = document.getElementById('results-count');
+        const mainGrid = document.getElementById('main-grid');
+
+        // Функция фильтрации модов
+        function filterMods() {
+            const selectedCategory = categoryFilter.value;
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let foundCount = 0;
+
+            // Если пустой поиск и категория не выбрана, скрываем результаты
+            if (searchTerm === '' && selectedCategory === '') {
+                searchResults.style.display = 'none';
+                mainGrid.style.display = 'block';
+                return;
+            }
+
+            // Очищаем результаты
+            resultsGrid.innerHTML = '';
+            
+            // Ищем подходящие моды
+            modCards.forEach(card => {
+                const tags = Array.from(card.classList).slice(1);
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const description = card.querySelector('p') ? card.querySelector('p').innerText.toLowerCase() : '';
+                
+                const matchesCategory = !selectedCategory || tags.includes(selectedCategory);
+                const matchesSearch = searchTerm === '' || 
+                                    title.includes(searchTerm) || 
+                                    description.includes(searchTerm) ||
+                                    tags.some(tag => tag.includes(searchTerm));
+                
+                if (matchesCategory && matchesSearch) {
+                    const clone = card.cloneNode(true);
+                    resultsGrid.appendChild(clone);
+                    foundCount++;
+                }
+            });
+
+            // Обновляем счетчик результатов
+            resultsCount.textContent = `Найдено: ${foundCount}`;
+            
+            // Если есть результаты, показываем контейнер
+            if (foundCount > 0) {
+                searchResults.style.display = 'block';
+                mainGrid.style.display = 'none';
+            } else {
+                // Показываем сообщение "нет результатов"
+                resultsGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>Ничего не найдено</h3>
+                        <p>Попробуйте изменить поисковый запрос или выбрать другую категорию</p>
+                    </div>
+                `;
+                searchResults.style.display = 'block';
+                mainGrid.style.display = 'none';
+            }
+        }
+
+        // Функция очистки поиска
+        function clearSearch() {
+            searchInput.value = '';
+            categoryFilter.value = '';
+            searchResults.style.display = 'none';
+            mainGrid.style.display = 'block';
+        }
+
+        // Обработчики событий
+        categoryFilter.addEventListener('change', filterMods);
+        searchInput.addEventListener('input', filterMods);
+
+        // Автофокус на поле поиска
+        searchInput.focus();
+    </script>
+</body>
+</html>
+

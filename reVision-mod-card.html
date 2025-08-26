@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мод reVision</title>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>reVision</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .image-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .description {
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .section p {
+            margin-bottom: 10px;
+        }
+        
+        .features-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #e55a5a;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1>reVision</h1>
+            <p>Улучшите свою игру с помощью этого мода!</p>
+        </div>
+        
+        <!-- Секция изображения -->
+        <div class="image-section">
+            <img src="photo/revision-icon.png" alt="Изображение мода">
+        </div>
+        
+        <!-- Секция описания -->
+        <div class="description section">
+            <h2>Описание</h2>
+            <p>Мод разбавляет обычный Миндастри интересными дополнениями!<br>
+            Он был создан <strong>28 декабря 2019 года.</strong></p>
+        </div>
+        
+        <!-- Секция характеристик -->
+        <div class="section">
+            <h2>Что добавляет мод?</h2>
+            <ul class="features-list">
+                <li><strong>Снежки</strong><br>
+                    Добывайте снег.<br>
+                    Используйте его в качестве боеприпасов в «Шреддере» или растопите,<br>
+                    чтобы получить воду!<br>
+                <br>
+                <strong>- Морозильная камера</strong><br>
+                дает возможность создавать снежки из воды<br>
+                <br>
+                <strong>- Нагреватель</strong><br>
+                дает возможность создавать воду из снежков
+                <br></li>
+                    <br>
+                <li><strong>Буры</strong><br>
+                    <br>
+                <strong>- Скребок</strong><br>
+                Маленькая дрель, сделанная из металлолома.<br>
+                <br>
+                <strong>- Мультибур</strong><br>
+                Может добывать несколько ресурсов
+                одновременно в большой зоне<br>
+               (добывает все руды)
+               </li>
+                <br>
+                <li><strong>Загрязненная вода</strong><br>
+                Грязная вода, которя может быть очищена от тория<br> 
+                <br>
+                <strong>- Фильтр</strong><br>
+                Очищает загрязненную воду и извлекает из нее торий.<br>
+                <br>
+                <strong>- Загрязнитель</strong><br>
+                Загрязняет воду спорами
+                <br>
+                </li>
+                <br>
+                <strong>Стены</strong><br>
+                <br>
+                <strong>- Ремонтные стены (большая и маленькая)</strong><br>
+                Самовосстанавливающаяся стена<br></li>
+                <br>
+                <li><strong>Турели</strong><br>
+                    <br>
+                <strong>- Шредер</strong><br>
+                маленькая турель из металлолома<br>
+                 <br>
+                <strong>Хакер</strong><br>
+                Захватывает юнитов врагов. Скорость взлома зависит<br>
+                от максимального здоровья</li>
+                <li><strong>Шипы</strong><br>
+                Шипы наносят урон юнитам которыеБи<br>
+                на них наступают<br></li>
+                <br>
+                <li><strong>Коллектор</strong><br>
+                выбивает с вражеских юнитов металлалом<br></li>
+                <br>
+                <li><strong>Сито</strong><br>
+                превращает песок в металлолом<br></li>
+                <br>
+                <li><strong>Ветрянные турбины</strong><br>
+                Вырабатывает электричество из вохдуха<br></li>
+            </ul>
+        </div>
+        
+        <!-- Секция требований -->
+        <div class="section">
+            <h2>Требования</h2>
+            <p>Для корректной работы мода требуется:</p>
+            <ul class="features-list">
+                <li>V14 — поддержка mindustry v8</li>
+                <li>Минимум 2 ГБ оперативной памяти</li>
+                <li>С улыбкой скачивать мод (без улыбки не скачиваем)</li>
+            </ul>
+        </div>
+        
+        <!-- Секция скриншотов -->
+        <div class="section">
+            <h2>Скриншоты</h2>
+            <div class="image-section">
+                <img src="photo/revision-gameplay1.png" alt="Скриншот 1">
+                <img src="photo/revision-gameplay2.png" alt="Скриншот 2">
+            </div>
+        </div>
+        
+        <!-- Секция тегов -->
+        <div class="section">
+            <h2>Теги</h2>
+            <div class="tags">
+                <span class="tag">новые-механики</span>
+                <span class="tag">турели</span>
+                <span class="tag">стены</span>
+                <span class="tag">буры</span>
+                <span class="tag">фабрики</span>
+                <option class="tag">жидкости</option>
+            </div>
+        </div>
+        
+         <div class="section">
+            <h2>Как скачать мод?</h2><br>
+            <p>1. Клкните на кнопку <strong>Скачать мод</strong><br>
+               2. При открытие ссылки нажмите на зелёную кнопку <strong>код / code</strong><br>
+               3. В небольшом окошке нажимаем на кнопку скачать <strong>файл / download ZIP</strong><br>
+               4. Заходим в игру, во вкладке "модификации" нажать на <strong>"Импортировать модификацию"</strong>, <br>найти только что скачанный файл, нажать на него - начать играть с модом</p>
+        </div>
+
+        <!-- Кнопка загрузки -->
+        <div class="section">
+            <a href="https://github.com/Slava0135/reVision.git" class="download-btn"><strong>Скачать мод</strong></a>
+        </div>
+    </div>
+</body>
+</html>

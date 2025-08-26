@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<title>TimeControl</title>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .image-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .description {
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .section p {
+            margin-bottom: 10px;
+        }
+        
+        .features-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #e55a5a;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1>TimeControl</h1>
+            <p>мод который ускоряет или замедляет работу Mindustry.</p>
+        </div>
+        
+        <!-- Секция изображения -->
+        <div class="image-section">
+            <img src="photo/TimeControl-icon.jpg" alt="Изображение мода">
+        </div>
+        
+        <!-- Секция описания -->
+        <div class="description section">
+            <h2>Описание</h2>
+            <p>Мод добавляет возможность менять скорость<br>
+            последняя версия была выпущена <strong>23 июня 2022 года.</strong></p>
+        </div>
+        
+        <!-- Секция характеристик -->
+        <div class="section">
+            <h2>Что добавляет мод?</h2>
+            <ul class="features-list">
+             
+                <br><li>
+                    Поддерживает x1/256 ~ x256. Просто перетащите ползунок, чтобы настроить скорость. <br>
+                    Нажмите на 'x#', чтобы уменьшить интерфейс. Нажмите на кнопку, чтобы настроить скорость, <br>
+                    и удерживайте, чтобы вернуть интерфейс в полный размер.<br>
+                    <br>
+                    Не предназначено для многопользовательской игры.<br>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Секция требований -->
+        <div class="section">
+            <h2>Требования</h2>
+            <p>Для корректной работы мода требуется:</p>
+            <ul class="features-list">
+                <li>Не указано, для какой версии игры Mindustry можно скачать TimeControl.<br>
+                    но в новых версиях мод работает</li>
+                <li>Минимум 2 ГБ оперативной памяти</li>
+                <li>С улыбкой скачивать мод (без улыбки не скачиваем)</li>
+            </ul>
+        </div>
+        
+        <!-- Секция скриншотов -->
+        <div class="section">
+            <h2>Скриншоты</h2>
+            <div class="image-section">
+                <img src="photo/TimeControl-gameplay1.jpg" alt="Скриншот 1">
+                <img src="photo/TimeControl-gameplay2.jpg" alt="Скриншот 2">
+            </div>
+        </div>
+        
+        <!-- Секция тегов -->
+        <div class="section">
+            <h2>Теги</h2>
+            <div class="tags">
+                <span class="tag">возможности</span>
+                <span class="tag">читы</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Как скачать мод?</h2><br>
+            <p>1. Клкните на кнопку <strong>Скачать мод</strong><br>
+               2. При открытие ссылки нажмите на зелёную кнопку <strong>код / code</strong><br>
+               3. В небольшом окошке нажимаем на кнопку скачать <strong>файл / download ZIP</strong><br>
+               4. Заходим в игру, во вкладке "модификации" нажать на <strong>"Импортировать модификацию"</strong>, <br>найти только что скачанный файл, нажать на него - начать играть с модом</p>
+        </div>
+
+        <!-- Кнопка загрузки -->
+        <div class="section">
+            <a href="https://github.com/sk7725/TimeControl.git" class="download-btn"><strong>Скачать мод</strong></a>
+        </div>
+    </div>
+</body>
+</html>

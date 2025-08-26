@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<title>Extended UI</title>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .image-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .description {
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .section p {
+            margin-bottom: 10px;
+        }
+        
+        .features-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #e55a5a;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1>Extended UI</h1>
+            <p>Мод для игровой индустрии, расширяющий<br> 
+            пользовательский интерфейс полезными функциями.</p>
+        </div>
+        
+        <!-- Секция изображения -->
+        <div class="image-section">
+            <img src="photo/Extended UI-icon.png" alt="Изображение мода">
+        </div>
+        
+        <!-- Секция описания -->
+        <div class="description section">
+            <h2>Описание</h2>
+            <p>Мод добавляет много удобных Функций!<br>
+            Он был создан <strong>11 августа 2023 года</strong></p>
+        </div>
+        
+        <!-- Секция характеристик -->
+        <div class="section">
+            <h2>Что добавляет мод?</h2>
+            <ul class="features-list">
+                <li><strong>Пользовательский интерфейс</strong><br>
+                    Основная часть модификации. Работает только на вашем клиенте. 
+                    Большинство функций здесь включены по умолчанию.<br>
+                    <br>
+                <strong>- Таблица схем</strong><br>
+                <br>
+                Быстрый доступ к вашим схемам. Разделены на категории (первый ряд кнопок).<br>
+                Настраивается — щелкните правой кнопкой мыши (дважды коснитесь на мобильном)<br>
+                1. На этикетке указано название категории.<br>
+                2. Нажмите на кнопку категории (первая строка), чтобы выбрать иконку.<br>
+                3. Нажмите на кнопку со схематической иконкой(все остальные),<br>
+                4. чтобы установить иконку или схему.Вы также можете изменить количество <br>
+                строк/столбцов или размер кнопок в настройках мода.<br>
+                <br>
+                <strong>- Таблица единиц измерения</strong><br>
+                <br>
+                Отображает до 6 типов юнитов, которые есть у 8 лучших команд на карте, 
+                отсортированных по относительной ценности.<br>
+                Также есть несколько дополнительных функций:<br>
+                <br>
+                1. Наведите курсор на спрайт юнита на столе, чтобы увидеть, <br>
+                где он находится и на каком расстоянии.<br>
+                2. Нажмите на спрайт юнита на столе,<br>
+                чтобы отслеживать юнитов этого типа.<br>
+                <br>
+                <strong>- Силовая планка</strong><br>
+                <br>
+                Показывает общее состояние питания. <br>
+                Также предупреждает о разделении сети<br>
+                <br>
+                <strong>- Тестирование (по умолчанию отключено)</strong><br>
+                <br>
+                1.Показывает эффективность зданий для тестирования схем (WIP)<br>
+                2.Показывает, какой процессор управляет модулями для тестирования логики<br>
+                <br>
+                <strong>- Норма использования ресурсов</strong><br>
+                <br>
+                Показывает, сколько ресурсов вы производите<br>
+                <br>
+                <strong>- Другое</strong><br>
+                <br>
+                Расширяет границы минимального и максимального масштабирования <br>
+                Сохранение схем размером более 35x35. Работает в режиме наблюдателя <br>
+                Добывайте песок и другие нерудные полезные ископаемые<br>
+                Индикатор выполнения на заводе <br>
+                <br>
+                1. Полосы здоровья и щита юнита (требуют много кадров в секунду)<br>
+                2. Показывает дополнительную информацию о вражеских блоках <br>
+                3. Отслеживает курсор других игроков<br>
+                4.Улучшенный конвейер/система подачи<br>
+                </li><br>
+                <br><li>
+                    <strong>Взаимодействовать</strong><br>
+                    <br>
+                    Дополнительная часть модификации.<br>
+                    Автоматически взаимодействует с API игры <br>
+                    (поэтому <strong>вас могут забанить</strong>за их использование, будьте осторожны)<br>
+                    Для всех взаимодействий используется общий таймер, <br>
+                    который можно настроить в параметрах (по умолчанию 500 мс). <br>
+                    начения ниже 250 мс часто приводят к временной блокировке серверов,<br>
+                    поэтому я не рекомендую их использовать.<br>
+                    По умолчанию полностью отключено.<br>
+                    <br>
+                    <strong>- Билдинги с автоматическим заполнением</strong><br>
+                    <br>
+                    Автоматически размещает ресурсы с вашего дрона в зданиях, которые:<br>
+                    <br>
+                    1. Можете принять их<br>
+                    2. Можно использовать их (например, генераторы, но не контейнеры)<br>
+                    <br>
+                    Если <code>Allow interact with core automatically включен:</code><br>
+                    <br>
+                    1. Забирает ресурсы у ядер, если они нужны ближайшим зданиям<br>
+                    2. Возвращает ресурсы в ядро, если они не подходят<br>
+                    <br>
+                    Всё довольно просто: для генераторов выбирается первый<br>
+                    подходящий ресурс (например, уголь для сжигания),<br>
+                    для турелей — лучшие боеприпасы, а со всем остальным и так понятно<br>
+                    <br>
+
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Секция требований -->
+        <div class="section">
+            <h2>Требования</h2>
+            <p>Для корректной работы мода требуется:</p>
+            <ul class="features-list">
+                <li>Не указано, для какой версии игры Mindustry можно скачать Extended UI.<br>
+                     Известно, что мод работает только на клиенте. </li>
+                <li>Минимум 2 ГБ оперативной памяти</li>
+                <li>С улыбкой скачивать мод (без улыбки не скачиваем)</li>
+            </ul>
+        </div>
+        
+        <!-- Секция скриншотов -->
+        <div class="section">
+            <h2>Скриншоты</h2>
+            <div class="image-section">
+                <img src="photo/Extended UI-gameplay1.png" alt="Скриншот 1">
+                <img src="photo/Extended UI-gameplay2.png" alt="Скриншот 2">
+            </div>
+        </div>
+        
+        <!-- Секция тегов -->
+        <div class="section">
+            <h2>Теги</h2>
+            <div class="tags">
+                <span class="tag">новые-механики</span>
+                <span class="tag">возможности</span>
+                 <span class="tag">читы</span>
+            </div>
+        </div>
+        
+         <div class="section">
+            <h2>Как скачать мод?</h2><br>
+            <p>1. Клкните на кнопку <strong>Скачать мод</strong><br>
+               2. При открытие ссылки нажмите на зелёную кнопку <strong>код / code</strong><br>
+               3. В небольшом окошке нажимаем на кнопку скачать <strong>файл / download ZIP</strong><br>
+               4. Заходим в игру, во вкладке "модификации" нажать на <strong>"Импортировать модификацию"</strong>, <br>найти только что скачанный файл, нажать на него - начать играть с модом</p>
+        </div>
+
+        <!-- Кнопка загрузки -->
+        <div class="section">
+            <a href="https://github.com/Ferlern/extended-UI.git" class="download-btn"><strong>Скачать мод</strong></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+c<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<title>Xanthia</title>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .image-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .description {
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .section p {
+            margin-bottom: 10px;
+        }
+        
+        .features-list {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #e55a5a;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1></h1>
+            <p>Добавляет новую планету и много новых механгик, руд и т.п.<br> 
+            </p>
+        </div>
+        
+        <!-- Секция изображения -->
+        <div class="image-section">
+            <img src="photo/Xanthia-icon.jpg" alt="Изображение мода">
+        </div>
+        
+        <!-- Секция описания -->
+        <div class="description section">
+            <h2>Описание</h2>
+            <p>Xanthia — мод для Mindustry, добавляющий новую планету под названием Ксантия! <br>
+               Значение... не знаю, но этот мод добавляет новую (простую) кампанию с небольшой глупой механикой,<br>
+               использующей старый добрый Wproc. Я бы посоветовал попробовать.<br>
+               (версия 0.5) было выпущено 1 февраля 2025 года. <strong></strong></p>
+        </div>
+        
+        <!-- Секция характеристик -->
+        <div class="section">
+            <h2>Что добавляет мод?</h2>
+            <ul class="features-list">
+                <li><strong>Руды</strong><br>
+                    <br>
+                    <strong>- Эланит</strong><br>
+                    <br>
+                    Используется в базовых конструкциях.<br>Немного воспламеняемый.<br>
+                    <br>
+                    <strong>- Форониум</strong><br>
+                    <br>
+                    Используется в продвинутых конструкциях.<br>Затвердевшая версия форона.<br>
+                    <br>
+                    <strong>- Триллиниум</strong><br>
+                    <br>
+                    Используется в электричестве из-за большого заряда и проводимости.<br>
+                    <br>
+                    <strong>- Скалдиум</strong><br>
+                    <br>
+                    Используется аналогично углю. Сжигается легко.<br>
+                    <br>
+                    <strong>- Велориум</strong><br>
+                    <br>
+                    Радиоактивное  вещество.<br>
+                    <br>
+                    <strong>- Дураматерия</strong><br>
+                    <br>
+                    Используется в продвинутых структурах. <br>Похож на кинетический сплав за исключением того что он не заряжен<br>
+                    <br>
+                    <strong>- Тританиум</strong><br>
+                    <br>
+                    Тританиум. Очень радиоактивный и горячий материал.<br>
+                    Используется в лучших юнитах и турелях.<br>
+                    <br>
+                    <strong>- Разряженный Триллиниум</strong><br>
+                    <br>
+                    Разряженная версия Триллиниума.<br>
+                    <br>
+                </li>
+                <li><strong>Жидкости</strong><br>
+                <br>
+                <strong>- Форон</strong><br>
+                <br>
+                Используется в охлаждении.<br>
+                Может затвердеть до Форониума.<br>
+                <br>
+                <strong>- Крилин</strong><br>
+                <br>
+                Голубая жидкость полученная при соединении Велориума и Трифлюида.<br>
+                Лучше в охлаждении чем Форон, очень холодная жидкость.<br>
+                <br>
+                <strong>- Трифлюид</strong><br>
+                <br>
+                Используется в качестве материала для крафта продвинутых предметов.<br>
+                Жидкий вариант Триллиниума.<br>
+                <br>
+                <strong>- Расплавленный Велориум</strong><br>
+                <br>
+                Расплавленный вариант Велориума. Очень горячий.<br>
+                <br>
+                <strong>- Дым</strong><br>
+                <br>
+                Дым, который можно использовать ддля питания турбин <br>
+                <br>
+                <strong>- Трицыт</strong><br>
+                <br>
+                Очень горячая и радиоактивная жидкость<br>
+                <br>
+                </li>
+                <li><strong>Добавленные блоки</strong><br>
+                    <br>
+                    - 8 турелей.<br>
+                    <br>
+                    - 4 бура.<br>
+                    <br>
+                    - 3 насоса.<br>
+                    <br>
+                    - несколько видов конвейеров и всем вытекающим из них.<br>
+                    <br>
+                    - Стены из разных материалов.<br>
+                    <br>
+                    - Конструкторы юнитов.<br>
+                    <br>
+                    - Новые юниты<br>
+                    <br>
+                    - Amogus<br>
+                    <br>
+                    - 14 новых секторов<br>
+                    <br>
+                </li>
+                <div class=""></div>
+                
+                
+            </ul>
+        </div>
+        
+        <!-- Секция требований -->
+        <div class="section">
+            <h2>Требования</h2>
+            <p>Для корректной работы мода требуется:</p>
+            <ul class="features-list">
+                <li>Конкретная версия не указана, последняя версия мода 0.5</li>
+                <li>Минимум 2 ГБ оперативной памяти</li>
+                <li>С улыбкой скачивать мод (без улыбки не скачиваем)</li>
+            </ul>
+        </div>
+        
+        <!-- Секция скриншотов -->
+        <div class="section">
+            <h2>Скриншоты</h2>
+            <div class="image-section">
+                <img src="photo/Xanthia-gameplay1.jpg" alt="Скриншот 1">
+                <img src="photo/Xanthia-gameplay2.jpg" alt="Скриншот 2">
+            </div>
+        </div>
+        
+        <!-- Секция тегов -->
+        <div class="section">
+            <h2>Теги</h2>
+            <div class="tags">
+                <span class="tag">руды</span>
+                <span class="tag">жидкости</span>
+                <span class="tag">турели</span>
+                 <span class="tag">стены</span>
+                  <span class="tag">новые-механики</span>
+                   <span class="tag">юниты</span>
+                    <span class="tag">планеты</span>
+                    <span class="tag">буры</span>
+                     <span class="tag">фабрики</span>
+                    
+            </div>
+        </div>
+        
+         <div class="section">
+            <h2>Как скачать мод?</h2><br>
+            <p>1. Клкните на кнопку <strong>Скачать мод</strong><br>
+               2. При открытие ссылки нажмите на зелёную кнопку <strong>код / code</strong><br>
+               3. В небольшом окошке нажимаем на кнопку скачать <strong>файл / download ZIP</strong><br>
+               4. Заходим в игру, во вкладке "модификации" нажать на <strong>"Импортировать модификацию"</strong>, <br>найти только что скачанный файл, нажать на него - начать играть с модом</p>
+        </div>
+
+        <!-- Кнопка загрузки -->
+        <div class="section">
+            <a href="https://github.com/ItzCraft/Xanthia.git" class="download-btn"><strong>Скачать мод</strong></a>
+        </div>
+    </div>
+</body>
+</html>
