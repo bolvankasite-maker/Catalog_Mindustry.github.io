@@ -2,242 +2,251 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавлено для адаптивности -->
     <title>Каталог модов Mindustry</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-        }
-        
-        /* Общий блок для полей ввода */
-        .search-and-category {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        /* Поисковая строка */
-        input[type=search], select {
-            height: 40px;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-            padding-left: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,.1);
-            margin-right: 10px;
-            flex-grow: 1;
-            transition: all 0.3s ease;
-        }
-        
-        /* Выпадающий список */
-        select {
-            border: none;
-            border-radius: 5px;
-            width: 200px;
-            background-color: white;
-            border: 1px solid #ccc;
-            transition: all 0.3s ease;
-            color: #333; /* Цвет текста по умолчанию */
-        }
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Белый фон */
+    margin: 0;
+    padding: 0;
+    color: #222222; /* Тёмный текст */
+}
 
-        /* Цвет фона и текста при выборе */
-        select:focus {
-            border: none;
-            border-radius: 5px;
-            background-color: rgb(255, 255, 255); /* Черный фон при фокусе */
-            color: rgb(0, 0, 0); /* Белый текст при фокусе */
-        }
-        option:focus {
-            border: none;
-            border-radius: 5px;
-            background-color: rgb(0, 0, 0); /* Черный фон при фокусе */
-            color: rgb(255, 255, 255); } 
-        option:focus{
-             border: none;
-            border-radius: 5px;
-            background-color: rgb(0, 0, 0); /* Черный фон при фокусе */
-            color: rgb(255, 255, 255);
-        }
-        
-       
-        
+.container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
 
-        /* Карточка мода */
-        .mod-card {
-            display: inline-block;
-            vertical-align: top;
-            width: calc(33% - 20px);
-            margin-right: 20px;
-            margin-bottom: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,.1);
-            transition: transform .3s ease-in-out;
-            text-align: center;
-            border-radius: 10px;
-            padding: 15px;
-        }
-        
-        .mod-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,.2);
-        }
-        
-        .mod-card h4 {
-            color: #333;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .mod-card button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            background-color: #000000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .mod-card button:hover {
-            background-color: #2c2c2c;
-            transform: scale(1.05);
-        }
-        
-        /* Контейнер тегов */
-        .tags {
-            display: flex;
-            gap: 5px;
-            padding: 5px;
-            font-size: smaller;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            color: #ffffff;
-            background-color: #000000;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 12px;
-        }
-        
-        /* Контейнер результатов поиска */
-        .search-results-container {
-            display: none;
-            margin-bottom: 30px;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .search-results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 10px 0;
-            border-bottom: 2px solid #ddd;
-        }
-        
-        .results-count {
-            color: #666;
-            font-size: 16px;
-        }
-        
-        .clear-search {
-            background: #ff4444;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .clear-search:hover {
-            background: #cc0000;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            font-style: italic;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .mod-card {
-                width: 100%;
-                margin-right: 0;
-            }
-            
-            .search-and-category {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            select {
-                width: 100%;
-            }
-        }
+/* Общий блок для полей ввода */
+.search-and-category {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-        /* Стиль подвала */
-        footer {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 200px;
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .social-links {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            margin: 5px 0;
-            transition: color 0.3s;
-        }
-        
-        .social-links p {
-            color: white;
-            margin: 5px 0;
-        }
-        
-        .social-links a:hover {
-            color: #ff0000; /* Цвет при наведении */
-        }
+/* Поисковая строка */
+input[type=search], select {
+    height: 40px;
+    border: 1px solid #000000; /* Чёрная рамка */
+    border-radius: 5px;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Чёрный свет */
+    margin-right: 10px;
+    flex-grow: 1;
+    background-color: #ffffff; /* Белый фон */
+    color: #222222; /* Тёмный текст */
+    transition: all 0.3s ease;
+}
+
+/* Выпадающий список */
+select {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #ffffff;
+    color: #222222;
+    transition: all 0.3s ease;
+}
+
+/* Цвет фона и текста при выборе */
+select:focus {
+    background-color: #000000; /* Чёрный фон при фокусе */
+    color: #ffffff; /* Белый текст */
+    border: none;
+}
+
+option {
+    background-color: #ffffff;
+    color: #222222;
+}
+
+option:focus, option:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Карточка мода */
+.mod-card {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff; /* Белый фон карточек */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Чёрный свет */
+    transition: transform .3s ease-in-out;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+    color: #222222;
+    border: 1px solid #000000;
+}
+
+.mod-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mod-card h4, .mod-card h3 {
+    color: #000000; /* Чёрный заголовок */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mod-card p {
+    color: #444444;
+}
+
+.mod-card button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #000000; /* Чёрная кнопка */
+    color: #ffffff; /* Белый текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.mod-card button:hover {
+    background-color: #222222; /* Темнее при наведении */
+    transform: scale(1.05);
+}
+
+/* Контейнер тегов */
+.tags {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    font-size: smaller;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tag {
+    color: #ffffff;
+    background-color: #000000; /* Чёрный фон тегов */
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Контейнер результатов поиска */
+.search-results-container {
+    display: none;
+    margin-bottom: 30px;
+    animation: fadeIn 0.3s ease;
+}
+
+.search-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid #000000;
+}
+
+.results-count {
+    color: #000000;
+    font-size: 16px;
+}
+
+.clear-search {
+    background: #222222;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.clear-search:hover {
+    background: #000000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666666;
+    font-style: italic;
+}
+
+/* Адаптив */
+@media screen and (max-width: 768px) {
+    .mod-card {
+        width: 100%;
+        margin-right: 0;
+    }
+    
+    .search-and-category {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    select {
+        width: 100%;
+    }
+}
+
+/* Стиль подвала */
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #ffffff; /* Белый фон */
+    color: #222222;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #000000;
+}
+
+.social-links {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links a {
+    color: #000000; /* Чёрный цвет ссылок */
+    text-decoration: none;
+    margin: 5px 0;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+
+.social-links p {
+    color: #000000;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.social-links a:hover {
+    color: #222222; /* Темно-чёрный при наведении */
+}
     </style>
 </head>
 <body>
 <div class="container">
     <!-- Заголовок -->
     <h1 style="text-align:center; color: #333; margin-bottom: 30px;">Каталог модов Mindustry</h1>
-    
     <!-- Блок поиска и выбора категории -->
     <div class="search-and-category">
         <input type="search" placeholder="🔍 Искать моды..." id="search-input">
@@ -347,7 +356,8 @@
                 <span class="tag">схемы</span>
             </div>
         </div>
-            <!-- Карточка седьмого мода -->
+
+        <!-- Карточка седьмого мода -->
         <div class="mod-card руды жидкости турели стены новые-механики юниты планеты буры фабрик">
             <h3>Revengeance</h3>
             <p>Первый мой мод в котором вы с помощю межпланетного ускорителя попадаете на планету Селестис.</p>
@@ -459,6 +469,7 @@
     </script>
 </body>
 </html>
+
 
 
 
