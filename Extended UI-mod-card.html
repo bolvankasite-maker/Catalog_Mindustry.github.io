@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Extended UI</title>
+<title>extended UI</title>
 <head>
     <style>
         * {
@@ -52,6 +51,7 @@
             height: auto;
             border-radius: 10px;
         }
+
         
         .description {
             margin-bottom: 20px;
@@ -68,14 +68,19 @@
         .section h2 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #2c3e50;
+            color: #000000;
         }
         
         .section p {
+            
             margin-bottom: 10px;
         }
         
-        .features-list {
+        .features-list  {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .features-list li  {
             list-style-type: disc;
             margin-left: 20px;
         }
@@ -87,7 +92,7 @@
         }
         
         .tag {
-            background: #667eea;
+            background: #000000;
             color: white;
             padding: 5px 10px;
             border-radius: 15px;
@@ -98,7 +103,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background: #ff6b6b;
+            background: #000000;
             color: white;
             border: none;
             border-radius: 5px;
@@ -109,12 +114,165 @@
         }
         
         .download-btn:hover {
-            background: #e55a5a;
+            background: #222222;
         }
         
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
+            }
+        }
+
+        /*Спец-контейнер*/
+
+         .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .expandable-section {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .expandable-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .section-header:hover {
+            background: #e9ecef;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+            margin: 0;
+        }
+
+
+        
+        .section-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .section-icon::before,
+        .section-icon::after {
+            content: '';
+            position: absolute;
+            background: #000000;
+            transition: all 0.3s ease;
+        }
+
+        .section-icon::before {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .section-icon::after {
+            width: 2px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background: white;
+        }
+
+        .content-inner {
+            padding: 0 24px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .content-text {
+            color: #555;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Активное состояние */
+        .expandable-section.active .section-header {
+            background: #000000;
+        }
+
+        .expandable-section.active .section-title {
+            color: white;
+        }
+
+        .expandable-section.active .section-icon {
+            transform: rotate(45deg);
+        }
+
+        .expandable-section.active .section-icon::before,
+        .expandable-section.active .section-icon::after {
+            background: white;
+        }
+
+        .expandable-section.active .section-content {
+            
+            padding: 20px 0;
+        }
+
+        .expandable-section.active .content-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Анимация для плавного появления текста */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-text {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .section-header {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+            
+            .content-text {
+                font-size: 14px;
             }
         }
     </style>
@@ -128,7 +286,6 @@
             пользовательский интерфейс полезными функциями.</p>
         </div>
         
-
         
         <!-- Секция описания -->
         <div class="description section">
@@ -136,13 +293,22 @@
             <p>Мод добавляет много удобных Функций!<br>
             Он был создан <strong>11 августа 2023 года</strong></p>
         </div>
-        
+
         <!-- Секция характеристик -->
         <div class="section">
             <h2>Что добавляет мод?</h2>
-            <ul class="features-list">
-                <li><strong>Пользовательский интерфейс</strong><br>
-                    Основная часть модификации. Работает только на вашем клиенте. 
+            <!-- спец-секция -->
+    <div class="container-1">
+        <div class="expandable-section active">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3 class="section-title">Пользовательский интерфейс</h3>
+                <div class="section-icon"></div>
+            </div>
+            <div class="section-content">
+                <div class="content-inner">
+                    <p class="content-text">
+                <ul class="features-list">
+                    <li>Основная часть модификации. Работает только на вашем клиенте. 
                     Большинство функций здесь включены по умолчанию.<br>
                     <br>
                 <strong>- Таблица схем</strong><br>
@@ -191,11 +357,24 @@
                 2. Показывает дополнительную информацию о вражеских блоках <br>
                 3. Отслеживает курсор других игроков<br>
                 4.Улучшенный конвейер/система подачи<br>
-                </li><br>
-                <br><li>
-                    <strong>Взаимодействовать</strong><br>
-                    <br>
-                    Дополнительная часть модификации.<br>
+                <br>
+                    </li>
+                </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="expandable-section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3 class="section-title">Взаимодействие</h3>
+                <div class="section-icon"></div>
+            </div>
+            <div class="section-content">
+                <div class="content-inner">
+                    <p class="content-text">
+                        <ul>
+                        <li><strong></strong>Дополнительная часть модификации.</strong><br>
                     Автоматически взаимодействует с API игры <br>
                     (поэтому <strong>вас могут забанить</strong>за их использование, будьте осторожны)<br>
                     Для всех взаимодействий используется общий таймер, <br>
@@ -220,12 +399,17 @@
                     подходящий ресурс (например, уголь для сжигания),<br>
                     для турелей — лучшие боеприпасы, а со всем остальным и так понятно<br>
                     <br>
-
-                </li>
+                        </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
             </ul>
         </div>
         
-        <!-- Секция требований -->
+      <!-- Секция требований -->
         <div class="section">
             <h2>Требования</h2>
             <p>Для корректной работы мода требуется:</p>
@@ -255,6 +439,8 @@
                  <span class="tag">читы</span>
             </div>
         </div>
+            
+        
         
          <div class="section">
             <h2>Как скачать мод?</h2><br>
@@ -266,11 +452,67 @@
 
         <!-- Кнопка загрузки -->
         <div class="section">
-            <a href="https://github.com/Ferlern/extended-UI.git" class="download-btn"><strong>Скачать мод</strong></a>
+            <a href="https://github.com/Ferlern/extended-UI" class="download-btn"><strong>Скачать мод</strong></a>
         </div>
     </div>
 </body>
+ <script>
+        function toggleSection(header) {
+            const section = header.parentElement;
+            const isActive = section.classList.contains('active');
+            const content = section.querySelector('.section-content');
+            const innerContent = section.querySelector('.content-inner');
+            
+            // Закрываем все другие секции
+            document.querySelectorAll('.expandable-section').forEach(sec => {
+                if (sec !== section && sec.classList.contains('active')) {
+                    sec.classList.remove('active');
+                    sec.querySelector('.section-content').style.maxHeight = '0';
+                    sec.querySelector('.content-inner').style.opacity = '0';
+                    sec.querySelector('.content-inner').style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            // Переключаем текущую секцию
+            if (!isActive) {
+                section.classList.add('active');
+                // Расчет высоты контента для плавной анимации
+                const scrollHeight = content.scrollHeight;
+                content.style.maxHeight = scrollHeight + 'px';
+                
+                // Анимация появления текста с задержкой
+                setTimeout(() => {
+                    innerContent.classList.add('animate-text');
+                }, 150);
+            } else {
+                section.classList.remove('active');
+                content.style.maxHeight = '0';
+                innerContent.classList.remove('animate-text');
+                innerContent.style.opacity = '0';
+                innerContent.style.transform = 'translateY(-10px)';
+            }
+        }
+
+        // Обработчик для адаптивности при изменении размера окна
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.expandable-section.active').forEach(section => {
+                const content = section.querySelector('.section-content');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            });
+        });
+
+        // Инициализация первой секции как активной
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstSection = document.querySelector('.expandable-section');
+            const content = firstSection.querySelector('.section-content');
+            const innerContent = firstSection.querySelector('.content-inner');
+            
+            content.style.maxHeight = content.scrollHeight + 'px';
+            setTimeout(() => {
+                innerContent.classList.add('animate-text');
+            }, 150);
+        });
+    </script>
 </html>
 
-
-
+ 
