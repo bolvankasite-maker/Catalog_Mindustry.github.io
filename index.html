@@ -1,466 +1,320 @@
 <!DOCTYPE html>
 <html lang="ru">
-<meta charset="UTF-8">
-<title>Revengeance</title>
 <head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавлено для адаптивности -->
+    <title>Каталог модов Mindustry</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-        
-        .image-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .image-section img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Белый фон */
+    margin: 0;
+    padding: 0;
+    color: #222222; /* Тёмный текст */
+}
 
-        
-        .description {
-            margin-bottom: 20px;
-        }
-        
-        .section {
-            margin-bottom: 30px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #000000;
-        }
-        
-        .section p {
-            
-            margin-bottom: 10px;
-        }
-        
-        .features-list  {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        .features-list li  {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tag {
-            background: #000000;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .download-btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background: #000000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .download-btn:hover {
-            background: #222222;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-        }
+.container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
 
-        /*Спец-контейнер*/
+/* Общий блок для полей ввода */
+.search-and-category {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-         .container {
-            max-width: 800px;
-            width: 100%;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+/* Поисковая строка */
+input[type=search], select {
+    height: 40px;
+    border: 1px solid #000000; /* Чёрная рамка */
+    border-radius: 5px;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Чёрный свет */
+    margin-right: 10px;
+    flex-grow: 1;
+    background-color: #ffffff; /* Белый фон */
+    color: #222222; /* Тёмный текст */
+    transition: all 0.3s ease;
+}
 
-        .expandable-section {
-            border-bottom: 1px solid #eaeaea;
-        }
+/* Выпадающий список */
+select {
+    border: 1px solid #000000;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #ffffff;
+    color: #222222;
+    transition: all 0.3s ease;
+}
 
-        .expandable-section:last-child {
-            border-bottom: none;
-        }
+/* Цвет фона и текста при выборе */
+select:focus {
+    background-color: #000000; /* Чёрный фон при фокусе */
+    color: #ffffff; /* Белый текст */
+    border: none;
+}
 
-        .section-header {
-            padding: 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-            transition: background-color 0.3s ease;
-            position: relative;
-        }
+option {
+    background-color: #ffffff;
+    color: #222222;
+}
 
-        .section-header:hover {
-            background: #e9ecef;
-        }
+option:focus, option:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
 
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #000000;
-            margin: 0;
-        }
+/* Карточка мода */
+.mod-card {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff; /* Белый фон карточек */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Чёрный свет */
+    transition: transform .3s ease-in-out;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+    color: #222222;
+    border: 1px solid #000000;
+}
 
+.mod-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-        
-        .section-icon {
-            width: 20px;
-            height: 20px;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+.mod-card h4, .mod-card h3 {
+    color: #000000; /* Чёрный заголовок */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-        .section-icon::before,
-        .section-icon::after {
-            content: '';
-            position: absolute;
-            background: #000000;
-            transition: all 0.3s ease;
-        }
+.mod-card p {
+    color: #444444;
+}
 
-        .section-icon::before {
-            width: 100%;
-            height: 2px;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
+.mod-card button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #000000; /* Чёрная кнопка */
+    color: #ffffff; /* Белый текст */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
 
-        .section-icon::after {
-            width: 2px;
-            height: 100%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+.mod-card button:hover {
+    background-color: #222222; /* Темнее при наведении */
+    transform: scale(1.05);
+}
 
-        .section-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.3s ease;
-            background: white;
-        }
+/* Контейнер тегов */
+.tags {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    font-size: smaller;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-        .content-inner {
-            padding: 0 24px;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
+.tag {
+    color: #ffffff;
+    background-color: #000000; /* Чёрный фон тегов */
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-        .content-text {
-            color: #555;
-            line-height: 1.6;
-            font-size: 16px;
-        }
+/* Контейнер результатов поиска */
+.search-results-container {
+    display: none;
+    margin-bottom: 30px;
+    animation: fadeIn 0.3s ease;
+}
 
-        /* Активное состояние */
-        .expandable-section.active .section-header {
-            background: #000000;
-        }
+.search-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid #000000;
+}
 
-        .expandable-section.active .section-title {
-            color: white;
-        }
+.results-count {
+    color: #000000;
+    font-size: 16px;
+}
 
-        .expandable-section.active .section-icon {
-            transform: rotate(45deg);
-        }
+.clear-search {
+    background: #222222;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
 
-        .expandable-section.active .section-icon::before,
-        .expandable-section.active .section-icon::after {
-            background: white;
-        }
+.clear-search:hover {
+    background: #000000;
+}
 
-        .expandable-section.active .section-content {
-            
-            padding: 20px 0;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .expandable-section.active .content-inner {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666666;
+    font-style: italic;
+}
 
-        /* Анимация для плавного появления текста */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* Адаптив */
+@media screen and (max-width: 768px) {
+    .mod-card {
+        width: 100%;
+        margin-right: 0;
+    }
+    
+    .search-and-category {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    select {
+        width: 100%;
+    }
+}
 
-        .animate-text {
-            animation: fadeInUp 0.6s ease forwards;
-        }
+/* Стиль подвала */
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #ffffff; /* Белый фон */
+    color: #222222;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #000000;
+}
 
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .section-header {
-                padding: 20px;
-            }
-            
-            .section-title {
-                font-size: 16px;
-            }
-            
-            .content-text {
-                font-size: 14px;
-            }
-        }
+.social-links {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links a {
+    color: #000000; /* Чёрный цвет ссылок */
+    text-decoration: none;
+    margin: 5px 0;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+
+.social-links p {
+    color: #000000;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.social-links a:hover {
+    color: #222222; /* Темно-чёрный при наведении */
+}
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Заголовок -->
-        <div class="header">
-            <h1>reVision</h1>
-            <p>Мод разбавляет обычный Миндастри интересными нововеденьями<br> 
-            </p>
-        </div>
-        
-        <!-- Секция изображения -->
-        <div class="image-section">
-            <img src="revision-icon.jpg" alt="Изображение мода">
-        </div>
-        
-        <!-- Секция описания -->
-        <div class="description section">
-            <h2>Описание</h2>
-            <p>Мод добавляет несколько новых механик, буров, турелей и т.д.</p>
-        </div>
-        
-        <!-- Секция характеристик -->
-        <div class="section">
-            <h2>Что добавляет мод?</h2>
-            <!-- спец-секция -->
-    <div class="container-1">
-        <div class="expandable-section active">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h3 class="section-title">Руды и Жидкости</h3>
-                <div class="section-icon"></div>
-            </div>
-            <div class="section-content">
-                <div class="content-inner">
-                    <p class="content-text">
-                <ul class="features-list">
-                    <li><strong>Руды</strong><br>
-                        <br>
-                        <strong>- Снег</strong><br>
-                        <br>
-                       Замораживает юниты. Можно снова расплавить до состояния воды.<br>
-                        <br>
-                    </li>
-                    <li><strong>Жидкости</strong><br>
-                        <br>
-                        <strong>- Загрязненная вода</strong><br>
-                        <br>
-                        Грязная вода, которая может быть очищена с помощью тория. Может появляется на секторах.<br>
-                        <br>
-                    </li>
-                </ul>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="expandable-section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h3 class="section-title">Буры и Турели</h3>
-                <div class="section-icon"></div>
-            </div>
-            <div class="section-content">
-                <div class="content-inner">
-                    <p class="content-text">
-                        <ul>
-                        <li><strong>Буры</strong><br>
-                                <br>
-                                <strong>- Скребок</strong><br>
-                                <br>
-                                Маленький бур из металлолома.<br>
-                                <br>
-                                <strong>- МультиБур</strong><br>
-                                <br>
-                                Может добывать несколько ресурсов одновременно в большой зоне.<br>
-                                <br>
-                        </li>
-                         <li><strong>Турели</strong><br>
-                                <br>
-                                <strong>- Шредер</strong><br>
-                                <br>
-                                Маленькая турель из металлолома.<br>
-                                <br>
-                                <strong>- Хакер</strong><br>
-                                <br>
-                                Захватывает юнитов врагов. Скорость взлома зависит от<br>
-                                максимального здоровья.<br>
-                                <br>
-                        </li>
-                        <li><strong>Шипы</strong><br>
-                                <br>
-                                Наносит урон юнитам, которые наступают на этот блок.<br>
-                                <br>
-                        </li>
-                        <li><strong>Коллектор</strong><br>
-                                <br>
-                                Собирает металлолом с погибших юнитов.<br>
-                                
-                        </li>
-                        </ul>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="expandable-section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h3 class="section-title">Фабрики и электричество</h3>
-                <div class="section-icon"></div>
-            </div>
-            <div class="section-content">
-                <div class="content-inner">
-                    <p class="content-text">
-                        <ul>
-                            <li><strong>Фабрики</strong><br>
-                                <br>
-                                <strong>- Фильтр</strong><br>
-                                <br>
-                                Очищает загрязненную воду и извлекает из неё торий.<br>
-                                <br>
-                                <strong>- Загрязнитель</strong><br>
-                                <br>
-                                Загрязненяет воду спорами.<br>
-                                <br>
-                                <strong>- Морозилка</strong><br>
-                                <br>
-                                Превращает воду в снег.<br>
-                                <br>
-                                <strong>- Нагреватель</strong><br>
-                                <br>
-                                Превращает снег в воду.<br>
-                                <br>
-                                <strong>- Сито</strong><br>
-                                <br>
-                                Извлекает металлолом из песка.<br>
-                                <br>
-                                <strong>- Сжигатель угля</strong><br>
-                                <br>
-                                Сжигает уголь в нефть.<br>
-                                <br>
-                            </li>
-                            <li><strong>Электричество</strong><br>
-                                <br>
-                                <strong>- Ветрянная турбина</strong><br>
-                                <br>
-                                Примитивный генератор энергии.Эфективность зависит от кол-ва блоков вокруг.<br>
-                                <br>
-                                <strong>- Ремонтная стена</strong><br>
-                                <br>
-                                Самовосстанавливающаяся стена.<br>
-                                (Имеет 2 вариации)<br>
-                                <br>
-                            </li>
-                       </ul>
-                    </p>
-                </div>
-            </div>
-        </div>
+<div class="container">
+    <!-- Заголовок -->
+    <h1 style="text-align:center; color: #333; margin-bottom: 30px;">Каталог модов Mindustry</h1>
+    <!-- Блок поиска и выбора категории -->
+    <div class="search-and-category">
+        <input type="search" placeholder="🔍 Искать моды..." id="search-input">
+        <select id="category-filter">
+            <option value="">Все категории</option>
+            <option value="турели">турели</option>
+            <option value="расы">расы</option>
+            <option value="фабрики">фабрики</option>
+            <option value="стены">стены</option>
+            <option value="юниты">юниты</option>
+            <option value="руды">руды</option>
+            <option value="жидкости">жидкости</option>
+            <option value="блоки">блоки</option>
+            <option value="возможности">возможности</option>
+            <option value="новые-механики">новые-механики</option>
+            <option value="буры">буры</option>
+            <option value="читы">читы</option>
+            <option value="планеты">планеты</option>
+            <option value="улучшения">улучшения</option>
+            <option value="схемы">схемы</option>
+        </select>
     </div>
-            </ul>
+    
+    <!-- Контейнер результатов поиска (расположен ВЫШЕ основных модов) -->
+    <div class="search-results-container" id="search-results">
+        <div class="search-results-header">
+            <h2>Результаты поиска</h2>
+            <div class="results-count" id="results-count">Найдено: 0</div>
+            <button class="clear-search" onclick="clearSearch()">Очистить поиск</button>
         </div>
-        
-        <!-- Секция требований -->
-        <div class="section">
-            <h2>Требования</h2>
-            <p>Для корректной работы мода требуется:</p>
-            <ul class="features-list">
-                <li>Конкретная версия не указана, последняя версия мода 0.5</li>
-                <li>Минимум 2 ГБ оперативной памяти</li>
-                <li>С улыбкой скачивать мод (без улыбки не скачиваем)</li>
-            </ul>
-        </div>
-        
-        <!-- Секция скриншотов -->
-        <div class="section">
-            <h2>Скриншоты</h2>
-            <div class="image-section">
-                <img src="photo/Revengeance-gameplay1.jpg" alt="Скриншот 1">
-                <img src="photo/Revengeance-gameplay2.jpg" alt="Скриншот 2">
+        <div class="grid-container" id="results-grid"></div>
+    </div>
+    
+    <!-- Основная сетка модов -->
+    <div class="grid-container" id="main-grid">
+        <!-- Карточка первого мода -->
+        <div class="mod-card буры турели новые-механики стены фабрики">
+            <h3>reVision</h3>
+            <p>Добавляет несколько новых механик и разбавляет ваниллу</p>
+            <button onclick="window.location.href='reVision-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">буры</span>
+                <span class="tag">турели</span>
+                <span class="tag">новые-механики</span>
+                <span class="tag">стены</span>
+                <span class="tag">фабрики</span>
             </div>
         </div>
         
-        <!-- Секция тегов -->
-        <div class="section">
-            <h2>Теги</h2>
+        <!-- Карточка второго мода -->
+        <div class="mod-card новые-механики возможности читы">
+            <h3>Extended UI</h3>
+            <p>Мод для игровой индустрии, расширяющий пользовательский интерфейс полезными функциями.</p>
+            <button onclick="window.location.href='Extended UI-mod-card.html'">Подробнее</button>
             <div class="tags">
-                <span class="tag">руды</span>
+                <span class="tag">новые-механики</span>
+                <span class="tag">возможности</span>
+                <span class="tag">читы</span>
+            </div>
+        </div>
+        
+        <!-- Карточка третьего мода -->
+        <div class="mod-card руды жидкости турели стены новые-механики юниты планеты буры фабрики">
+            <h3>Xanthia</h3>
+            <p>Новая планета с большим наполнением</p>
+            <button onclick="window.location.href='Xanthia-mod-card.html'">Подробнее</button>
+            <div class="tags">
+               <span class="tag">руды</span>
                 <span class="tag">жидкости</span>
                 <span class="tag">турели</span>
                  <span class="tag">стены</span>
@@ -468,85 +322,154 @@
                    <span class="tag">юниты</span>
                     <span class="tag">планеты</span>
                     <span class="tag">буры</span>
-                     <span class="tag">фабрики</span>
-                    
+                    <span class="tag">фабрики</span>
             </div>
         </div>
         
-         <div class="section">
-            <h2>Как скачать мод?</h2><br>
-            <p>1. Клкните на кнопку <strong>Скачать мод</strong><br>
-               2. При открытие ссылки нажмите на зелёную кнопку <strong>код / code</strong><br>
-               3. В небольшом окошке нажимаем на кнопку скачать <strong>файл / download ZIP</strong><br>
-               4. Заходим в игру, во вкладке "модификации" нажать на <strong>"Импортировать модификацию"</strong>, <br>найти только что скачанный файл, нажать на него - начать играть с модом</p>
+        <!-- Карточка четвертого мода -->
+        <div class="mod-card возможности читы">
+            <h3>TimeControl</h3>
+            <p>Ускоряет или замедляет работу Mindustry.</p>
+            <button onclick="window.location.href='TimeControl-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">возможности</span>
+                <span class="tag">читы</span>
+            </div>
+        </div>
+        
+        <!-- Карточка пятого мода -->
+        <div class="mod-card улучшения">
+            <h3>Mindustry Overhaul</h3>
+            <p>Этот мод — не просто дополнение, это переосмысленная реальность. </p>
+            <button onclick="window.location.href='Mindustry Overhaul-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">улучшения</span>
+            </div>
+        </div>
+        
+        <!-- Карточка шестого мода -->
+        <div class="mod-card схемы">
+            <h3>schemepack 400+</h3>
+            <p>Пак схем для игры mindustry</p>
+            <button onclick="window.location.href='schemepack 400+-mod-card.html'">Подробнее</button>
+            <div class="tags">
+                <span class="tag">схемы</span>
+            </div>
         </div>
 
-        <!-- Кнопка загрузки -->
-        <div class="section">
-            <a href="https://github.com/ItzCraft/Xanthia.git" class="download-btn"><strong>Скачать мод</strong></a>
+        <!-- Карточка седьмого мода -->
+        <div class="mod-card руды жидкости турели стены новые-механики юниты планеты буры фабрик">
+            <h3>Revengeance</h3>
+            <p>Первый мой мод в котором вы с помощю межпланетного ускорителя попадаете на планету Селестис.</p>
+            <button onclick="window.location.href='Revengeance-mod-card.html'">Подробнее</button>
+            <div class="tags">
+               <span class="tag">руды</span>
+                <span class="tag">жидкости</span>
+                <span class="tag">турели</span>
+                 <span class="tag">стены</span>
+                  <span class="tag">новые-механики</span>
+                   <span class="tag">юниты</span>
+                    <span class="tag">планеты</span>
+                    <span class="tag">буры</span>
+                    <span class="tag">фабрики</span>
+            </div>
         </div>
     </div>
-</body>
- <script>
-        function toggleSection(header) {
-            const section = header.parentElement;
-            const isActive = section.classList.contains('active');
-            const content = section.querySelector('.section-content');
-            const innerContent = section.querySelector('.content-inner');
+
+    <!-- Подвал -->
+    <footer>
+        <div class="social-links">
+            <p>Telegram-каналы</p>
+            <a href="https://t.me/mindustry_all" target="_blank">Спонсор сайта</a>
+            <a href="https://t.me/CatalogMindustry" target="_blank">Автор сайта</a>
+            <a href="https://www.instagram.com" target="_blank"></a>
+            <a href="https://www.linkedin.com" target="_blank"></a>
+            <a href="https://www.youtube.com" target="_blank"></a>
+        </div>
+    </footer>
+
+    <script>
+        const modCards = document.querySelectorAll('.mod-card');
+        const categoryFilter = document.getElementById('category-filter');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const resultsGrid = document.getElementById('results-grid');
+        const resultsCount = document.getElementById('results-count');
+        const mainGrid = document.getElementById('main-grid');
+
+        // Функция фильтрации модов
+        function filterMods() {
+            const selectedCategory = categoryFilter.value;
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let foundCount = 0;
+
+            // Если пустой поиск и категория не выбрана, скрываем результаты
+            if (searchTerm === '' && selectedCategory === '') {
+                searchResults.style.display = 'none';
+                mainGrid.style.display = 'block';
+                return;
+            }
+
+            // Очищаем результаты
+            resultsGrid.innerHTML = '';
             
-            // Закрываем все другие секции
-            document.querySelectorAll('.expandable-section').forEach(sec => {
-                if (sec !== section && sec.classList.contains('active')) {
-                    sec.classList.remove('active');
-                    sec.querySelector('.section-content').style.maxHeight = '0';
-                    sec.querySelector('.content-inner').style.opacity = '0';
-                    sec.querySelector('.content-inner').style.transform = 'translateY(-10px)';
+            // Ищем подходящие моды
+            modCards.forEach(card => {
+                const tags = Array.from(card.classList).slice(1);
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const description = card.querySelector('p') ? card.querySelector('p').innerText.toLowerCase() : '';
+                
+                const matchesCategory = !selectedCategory || tags.includes(selectedCategory);
+                const matchesSearch = searchTerm === '' || 
+                                    title.includes(searchTerm) || 
+                                    description.includes(searchTerm) ||
+                                    tags.some(tag => tag.includes(searchTerm));
+                
+                if (matchesCategory && matchesSearch) {
+                    const clone = card.cloneNode(true);
+                    resultsGrid.appendChild(clone);
+                    foundCount++;
                 }
             });
+
+            // Обновляем счетчик результатов
+            resultsCount.textContent = `Найдено: ${foundCount}`;
             
-            // Переключаем текущую секцию
-            if (!isActive) {
-                section.classList.add('active');
-                // Расчет высоты контента для плавной анимации
-                const scrollHeight = content.scrollHeight;
-                content.style.maxHeight = scrollHeight + 'px';
-                
-                // Анимация появления текста с задержкой
-                setTimeout(() => {
-                    innerContent.classList.add('animate-text');
-                }, 150);
+            // Если есть результаты, показываем контейнер
+            if (foundCount > 0) {
+                searchResults.style.display = 'block';
+                mainGrid.style.display = 'none';
             } else {
-                section.classList.remove('active');
-                content.style.maxHeight = '0';
-                innerContent.classList.remove('animate-text');
-                innerContent.style.opacity = '0';
-                innerContent.style.transform = 'translateY(-10px)';
+                // Показываем сообщение "нет результатов"
+                resultsGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>Ничего не найдено</h3>
+                        <p>Попробуйте изменить поисковый запрос или выбрать другую категорию</p>
+                    </div>
+                `;
+                searchResults.style.display = 'block';
+                mainGrid.style.display = 'none';
             }
         }
 
-        // Обработчик для адаптивности при изменении размера окна
-        window.addEventListener('resize', () => {
-            document.querySelectorAll('.expandable-section.active').forEach(section => {
-                const content = section.querySelector('.section-content');
-                content.style.maxHeight = content.scrollHeight + 'px';
-            });
-        });
+        // Функция очистки поиска
+        function clearSearch() {
+            searchInput.value = '';
+            categoryFilter.value = '';
+            searchResults.style.display = 'none';
+            mainGrid.style.display = 'block';
+        }
 
-        // Инициализация первой секции как активной
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstSection = document.querySelector('.expandable-section');
-            const content = firstSection.querySelector('.section-content');
-            const innerContent = firstSection.querySelector('.content-inner');
-            
-            content.style.maxHeight = content.scrollHeight + 'px';
-            setTimeout(() => {
-                innerContent.classList.add('animate-text');
-            }, 150);
-        });
+        // Обработчики событий
+        categoryFilter.addEventListener('change', filterMods);
+        searchInput.addEventListener('input', filterMods);
+
+        // Автофокус на поле поиска
+        searchInput.focus();
     </script>
+</body>
 </html>
 
- 
 
 
 
